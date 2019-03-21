@@ -413,18 +413,18 @@ Faire une capture du ping.
 
 | De Client\_in\_LAN à | OK/KO | Commentaires et explications |
 | :---                 | :---: | :---                         |
-| Interface DMZ du FW  |       |                              |
-| Interface LAN du FW  |       |                              |
-| Client LAN           |       |                              |
-| Serveur WAN          |       |                              |
+| Interface DMZ du FW  |  KO   | Nous avons mis comme policy de drop tout |
+| Interface LAN du FW  |  KO   | Nous avons mis comme policy de drop tout |
+| Client LAN           |  OK   | évidement, une machine peut se ping elle-meme |
+| Serveur WAN          |  OK   | Suite aux regles iptables faites auparavent, il est normal de pouvoir ping le WAN |
 
 
 | De Server\_in\_DMZ à | OK/KO | Commentaires et explications |
 | :---                 | :---: | :---                         |
-| Interface DMZ du FW  |       |                              |
-| Interface LAN du FW  |       |                              |
-| Serveur DMZ          |       |                              |
-| Serveur WAN          |       |                              |
+| Interface DMZ du FW  |  KO   | Nous avons mis comme policy de drop tout |
+| Interface LAN du FW  |  KO   | Nous avons mis comme policy de drop tout |
+| Serveur DMZ          |  OK   | évidement, une machine peut se ping elle-meme |
+| Serveur WAN          |  KO   | Comme nous n'avons pas établi de regles iptables pour la zone DMZ, il est normal qu'il ne puisse pas ping le WAN |
 
 
 ## Règles pour le protocole DNS
