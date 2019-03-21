@@ -125,13 +125,29 @@ _Lors de la définition d'une zone, spécifier l'adresse du sous-réseau IP avec
 
 | Adresse IP source | Adresse IP destination | Type | Port src | Port dst | Action |
 | :---:             | :---:                  | :---:| :------: | :------: | :----: |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
-|                   |                        |      |          |          |        |
+| 192.168.100.0/24  | interface WAN          | UDP  |   ANY    |    53    | Accept |
+| interface WAN     | 192.168.100.0/24       | UDP  |   53     |    ANY   | Accept |
+| 192.168.100.0/24  | interface WAN          | TCP  |   ANY    |    53    | Accept |
+| interface WAN     | 192.168.100.0/24       | TCP  |   53     |    ANY   | Accept |
+| 192.168.100.0/24  | interface WAN          | ICMP |  ----    |   ----   | Accept |
+| interface WAN     | 192.168.100.0/24       | ICMP |  ----    |   ----   | Accept |
+| 192.168.100.0/24  | 192.168.200.0/24       | ICMP |  ----    |   ----   | Accept |
+| 192.168.200.0/24  | 192.168.100.0/24       | ICMP |  ----    |   ----   | Accept |
+| 192.168.100.0/24  | interface WAN          | TCP  |   ANY    |    80    | Accept |
+| interface WAN     | 192.168.100.0/24       | TCP  |   80     |    ANY   | Accept |
+| 192.168.100.0/24  | interface WAN          | TCP  |   ANY    |   8080   | Accept |
+| interface WAN     | 192.168.100.0/24       | TCP  |  8080    |    ANY   | Accept |
+| 192.168.100.0/24  | interface WAN          | TCP  |   ANY    |   443    | Accept |
+| interface WAN     | 192.168.100.0/24       | TCP  |   443    |    ANY   | Accept |
+| interface WAN     | 192.168.200.3          | TCP  |   ANY    |    80    | Accept |
+| 192.168.200.3     | interface WAN          | TCP  |   80     |    ANY   | Accept |
+| 192.168.100.0/24  | 192.168.200.3          | TCP  |   ANY    |    80    | Accept |
+| 192.168.200.3     | 192.168.100.0/24       | TCP  |   80     |    ANY   | Accept |
+| 192.168.100.3     | 192.168.200.3          | TCP  |   ANY    |    22    | Accept |
+| 192.168.200.3     | 192.168.100.3          | TCP  |   22     |    ANY   | Accept |
+| 192.168.100.3     | 192.168.100.2          | TCP  |   ANY    |    22    | Accept |
+| 192.168.100.2     | 192.168.100.3          | TCP  |   22     |    ANY   | Accept |
+| ANY               | ANY                    | ANY  |   ANY     |   ANY   | Drop   |
 
 ---
 
