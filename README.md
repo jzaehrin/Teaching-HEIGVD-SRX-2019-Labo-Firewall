@@ -243,9 +243,9 @@ ping 192.168.200.3
 ---
 
 **LIVRABLE : capture d'écran de votre tentative de ping.**  
-[](./imgs/ping_fail_lan_dmz.png)
-[](./imgs/ping_fail_web.png)
-[](./imgs/ping_fail_web2.png)
+![](./imgs/ping_fail_lan_dmz.png)
+![](./imgs/ping_fail_web.png)
+![](./imgs/ping_fail_web2.png)
 
 ---
 
@@ -278,8 +278,8 @@ ping 192.168.100.3
 ---
 
 **LIVRABLE : capture d'écran de votre nouvelle tentative de ping.**
-[](./imgs/ping_dmz_lan.png)
-[](./imgs/ping_lan_dmz.png)
+![](./imgs/ping_dmz_lan.png)
+![](./imgs/ping_lan_dmz.png)
 
 ---
 
@@ -294,7 +294,7 @@ ping 8.8.8.8
 ---
 
 **LIVRABLE : capture d'écran de votre ping vers l'Internet.**
-[](./imgs/ping.png)
+![](./imgs/ping.png)
 
 ---
 
@@ -421,7 +421,7 @@ Faire une capture du ping.
 ---
 
 **LIVRABLE : capture d'écran de votre ping vers l'Internet.**
-[](./imgs/ping_up.png)
+![](./imgs/ping_up.png)
 
 ---
 
@@ -463,7 +463,7 @@ ping www.google.com
 ---
 
 **LIVRABLE : capture d'écran de votre ping.**
-[](./imgs/dns_fail.png)
+![](./imgs/dns_fail.png)
 
 ---
 
@@ -491,7 +491,7 @@ iptables -A FORWARD -p tcp --sport 53 -i eth0 -d 192.168.100.0/24 -j ACCEPT
 ---
 
 **LIVRABLE : capture d'écran de votre ping.**
-[](./imgs/dns.png)
+![](./imgs/dns.png)
 
 ---
 
@@ -557,9 +557,9 @@ iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -o eth0 -j ACCEPT
 ---
 
 **LIVRABLE : capture d'écran.**
-[](./http.png)
-[](./https.png)
-[](./http_dmz.png)
+![](./http.png)
+![](./https.png)
+![](./http_dmz.png)
 
 ---
 
@@ -600,8 +600,8 @@ ssh root@192.168.200.3 (password : celui que vous avez configuré)
 ---
 
 **LIVRABLE : capture d'écran de votre connexion ssh.**
-[](./ssh_dmz.png)
-[](./ssh_firewall.png)
+![](./ssh_dmz.png)
+![](./ssh_firewall.png)
 
 ---
 
@@ -642,6 +642,6 @@ A présent, vous devriez avoir le matériel nécessaire afin de reproduire la ta
 ---
 
 **LIVRABLE : capture d'écran avec toutes vos règles.**
-[](./config.png)
+![](./config.png)
 
 ---
