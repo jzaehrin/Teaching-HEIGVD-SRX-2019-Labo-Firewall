@@ -385,6 +385,18 @@ Commandes iptables :
 
 ```bash
 LIVRABLE : Commandes iptables
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+
+iptables -A FORWARD -p icmp -s 192.168.200.0/24 -d 192.168.100.0/24 --icmp-type 0 -j ACCEPT
+iptables -A FORWARD -p icmp -s 192.168.100.0/24 -d 192.168.200.0/24 --icmp-type 8 -j ACCEPT
+
+iptables -A FORWARD -p icmp -s 192.168.100.0/24 -o eth0 --icmp-type 8 -j ACCEPT
+iptables -A FORWARD -p icmp -i eth0 -d 192.168.100.0/24 --icmp-type 0 -j ACCEPT
+
+iptables -A FORWARD -p icmp -s 192.168.200.0/24 -d 192.168.100.0/24 --icmp-type 8 -j ACCEPT
+iptables -A FORWARD -p icmp -s 192.168.100.0/24 -d 192.168.200.0/24 --icmp-type 0 -j ACCEPT
 ```
 ---
 
@@ -397,7 +409,7 @@ LIVRABLE : Commandes iptables
 
 ```bash
 ping 8.8.8.8
-``` 	            
+``` 	           
 Faire une capture du ping.
 
 ---
@@ -454,6 +466,10 @@ Commandes iptables :
 
 ```bash
 LIVRABLE : Commandes iptables
+iptables -A FORWARD -p udp --dport 53 -s 192.168.100.0/24 -o eth0 -j ACCEPT
+iptables -A FORWARD -p udp --sport 53 -i eth0 -d 192.168.100.0/24 -j ACCEPT
+iptables -A FORWARD -p tcp --dport 53 -s 192.168.100.0/24 -o eth0 -j ACCEPT
+iptables -A FORWARD -p tcp --sport 53 -i eth0 -d 192.168.100.0/24 -j ACCEPT
 ```
 
 ---
@@ -498,6 +514,12 @@ Commandes iptables :
 
 ```bash
 LIVRABLE : Commandes iptables
+iptables -A FORWARD -p tcp -s 192.168.100.0/24 --dport 80 -o eth0 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.100.0/24 --dport 443 -o eth0 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.100.0/24 --dport 8080 -o eth0 -j ACCEPT
+iptables -A FORWARD -p tcp -i eth0 --sport 80 -d 192.168.100.0/24 -j ACCEPT
+iptables -A FORWARD -p tcp -i eth0 --sport 8080 -d 192.168.100.0/24 -j ACCEPT
+iptables -A FORWARD -p tcp -i eth0 --sport 443 -d 192.168.100.0/24 -j ACCEPT
 ```
 
 ---
@@ -510,6 +532,10 @@ Commandes iptables :
 
 ```bash
 LIVRABLE : Commandes iptables
+iptables -A FORWARD -p tcp -s 192.168.100.0/24 --dport 80 -d 192.168.200.3 -j ACCEPT
+iptables -A FORWARD -p tcp -i eth0 --dport 80 -d 192.168.200.3 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -d 192.168.100.0/24 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -o eth0 -j ACCEPT
 ```
 ---
 
@@ -538,6 +564,16 @@ Commandes iptables :
 
 ```bash
 LIVRABLE : Commandes iptables
+iptables -A FORWARD -p tcp -s 192.168.100.0/24 --dport 80 -d 192.168.200.3 -j ACCEPT
+iptables -A FORWARD -p tcp -i eth0 --dport 80 -d 192.168.200.3 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -d 192.168.100.0/24 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -o eth0 -j ACCEPT
+
+iptables -A FORWARD -p tcp -s 192.168.100.3 -d 192.168.200.3 --dport 22 -j ACCEPT
+iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 22 -d 192.168.100.3 -j ACCEPT
+
+iptables -A INPUT -p tcp -s 192.168.100.3 -d 192.168.100.2 --dport 22 -j ACCEPT
+iptables -A OUTPUT -p tcp -s 192.168.100.2 --sport 22 -d 192.168.100.3 -j ACCEPT
 ```
 
 ---
