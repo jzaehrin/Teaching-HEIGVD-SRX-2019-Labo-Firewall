@@ -557,9 +557,10 @@ iptables -A FORWARD -p tcp -s 192.168.200.3 --sport 80 -o eth0 -j ACCEPT
 ---
 
 **LIVRABLE : capture d'écran.**
-![](./http.png)
-![](./https.png)
-![](./http_dmz.png)
+
+![](./imgs/http.png)
+![](./imgs/https.png)
+![](./imgs/http_dmz.png)
 
 ---
 
@@ -600,8 +601,9 @@ ssh root@192.168.200.3 (password : celui que vous avez configuré)
 ---
 
 **LIVRABLE : capture d'écran de votre connexion ssh.**
-![](./ssh_dmz.png)
-![](./ssh_firewall.png)
+
+![](./imgs/ssh_dmz.png)
+![](./imgs/ssh_firewall.png)
 
 ---
 
@@ -642,6 +644,7 @@ A présent, vous devriez avoir le matériel nécessaire afin de reproduire la ta
 ---
 
 **LIVRABLE : capture d'écran avec toutes vos règles.**
-![](./config.png)
+
+![](./imgs/config.png)
 
 ---
