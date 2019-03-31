@@ -463,6 +463,7 @@ ping www.google.com
 ---
 
 **LIVRABLE : capture d'écran de votre ping.**
+
 ![](./imgs/dns_fail.png)
 
 ---
