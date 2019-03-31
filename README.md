@@ -278,10 +278,10 @@ ping 192.168.200.3
 ```
 ---
 
-**LIVRABLE : capture d'écran de votre tentative de ping.**^M
-![](./imgs/ping_fail_lan_dmz.png)^M
-![](./imgs/ping_fail_web.png)^M
-![](./imgs/ping_fail_web2.png)^M
+**LIVRABLE : capture d'écran de votre tentative de ping.**
+![](./imgs/ping_fail_lan_dmz.png)
+![](./imgs/ping_fail_web.png)
+![](./imgs/ping_fail_web2.png)
  
 
 ---
@@ -337,9 +337,9 @@ ping 192.168.100.3
 
 ---
 
-**LIVRABLE : capture d'écran de votre nouvelle tentative de ping.**^M
-![](./imgs/ping_dmz_lan.png)^M
-![](./imgs/ping_lan_dmz.png)^M
+**LIVRABLE : capture d'écran de votre nouvelle tentative de ping.**
+![](./imgs/ping_dmz_lan.png)
+![](./imgs/ping_lan_dmz.png)
 
 ---
 
@@ -353,8 +353,8 @@ ping 8.8.8.8
 
 ---
 
-**LIVRABLE : capture d'écran de votre ping vers l'Internet.**^M
-![](./imgs/ping.png)^M
+**LIVRABLE : capture d'écran de votre ping vers l'Internet.**
+![](./imgs/ping.png)
 
 ---
 
