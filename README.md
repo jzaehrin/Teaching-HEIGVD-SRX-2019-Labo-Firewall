@@ -504,6 +504,8 @@ iptables -A FORWARD -p tcp --sport 53 -i eth0 -d 192.168.100.0/24 -j ACCEPT
 **Réponse**
 
 **LIVRABLE : Votre réponse ici...**
+Le pare-feu ne laissant à ce stade pas encore passer les communications UDP (et TCP pour des cas plus particuliers) sur le port associé aux DNS,
+l'URL www.google.com ne peut pas être traduite en adresse IP, et le paquet n'est donc pas envoyé.
 
 ---
 
@@ -616,6 +618,8 @@ ssh root@192.168.200.3 (password : celui que vous avez configuré)
 **Réponse**
 
 **LIVRABLE : Votre réponse ici...**
+Le protocol ssh met à disposition un shell sécurisé à travers le réseau.
+Il permet notamment d'administrer un serveur à distance, ainsi que de réagir rapidement en cas de panne.
 
 ---
 
@@ -629,6 +633,12 @@ ssh root@192.168.200.3 (password : celui que vous avez configuré)
 **Réponse**
 
 **LIVRABLE : Votre réponse ici...**
+Il faut faire attention à ce que les règles du pare-feu soient les plus strictes possibles,
+c'est à dire qu'elle ne laisse passer uniquement les paquets d'une machine précise vers une autre machine précise pour un port et un protocol donné.
+Tout le reste doit être interdit.
+
+En somme, il s'agit d'une situation analogue à un marriage.
+En effet, comme pour ce dernier, tout ce qui n'est pas clairement autorisé doit être considéré comme interdit, et donc configuré comme tel.
 
 ---
 
