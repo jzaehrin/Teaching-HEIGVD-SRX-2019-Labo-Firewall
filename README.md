@@ -264,10 +264,70 @@ ip route add default via 192.168.100.2
 
 Dans un terminal de votre serveur, taper les commandes suivantes :
 
+Vous pouvez bien évidemment lancer des terminaux avec les trois machines en même temps !
+
+
+## Configuration de base
+
+La plupart de paramètres sont déjà configurés correctement sur les trois machines. Il est pourtant nécessaire de rajouter quelques commandes afin de configurer correctement le réseau pour le labo.
+
+Vous pouvez commencer par vérifier que le ping n'est pas possible actuellement entre les machines. Depuis votre Client\_in\_LAN, essayez de faire un ping sur le Server_in_DMZ (cela ne devrait pas fonctionner !) :
+
+```bash
+ping 192.168.200.3
+```
+---
+
+**LIVRABLE : capture d'écran de votre tentative de ping.**^M
+![](./imgs/ping_fail_lan_dmz.png)^M
+![](./imgs/ping_fail_web.png)^M
+![](./imgs/ping_fail_web2.png)^M
+ 
+
+---
+
+En effet, la communication entre les clients dans le LAN et les serveurs dans la DMZ doit passer à travers le Firewall. Il faut donc définir le Firewall comme passerelle par défaut pour le client dans le LAN et le serveur dans la DMZ.
+
+### Configuration du client LAN
+
+Dans un terminal de votre client, taper les commandes suivantes :
+
+```bash
+ip route del default 
+ip route add default via 192.168.100.2
+```
+
+### Configuration du serveur dans la DMZ
+
+Dans un terminal de votre serveur dans DMZ, vous pouvez utiliser l'éditeur `nano` déjà installé pour éditer le fichier `/etc/ssh/sshd_config`.
+
+Il faudra changer la ligne :
+
+```
+#PermitRootLogin prohibit-password
+```
+
+à :
+
+```
+PermitRootLogin yes
+```
+
+et enregistrer et fermer le fichier en question.
+
+**ATTENTION :** Il faudra aussi définir un mot de passe pour pour les connexions ssh. Pour cela, utiliser la commande `passwd`.
+
+Toujours dans un terminal de votre serveur, taper les commandes suivantes :
+
 ```bash
 ip route del default 
 ip route add default via 192.168.200.2
+
+service nginx start
+service ssh start
 ```
+
+Les deux dernières commandes démarrent les services Web et SSH du serveur.
 
 La communication devrait maintenant être possible entre les deux machines. Faites un nouveau test de ping, cette fois-ci depuis le serveur vers le client :
 
@@ -277,9 +337,9 @@ ping 192.168.100.3
 
 ---
 
-**LIVRABLE : capture d'écran de votre nouvelle tentative de ping.**
-![](./imgs/ping_dmz_lan.png)
-![](./imgs/ping_lan_dmz.png)
+**LIVRABLE : capture d'écran de votre nouvelle tentative de ping.**^M
+![](./imgs/ping_dmz_lan.png)^M
+![](./imgs/ping_lan_dmz.png)^M
 
 ---
 
@@ -293,8 +353,8 @@ ping 8.8.8.8
 
 ---
 
-**LIVRABLE : capture d'écran de votre ping vers l'Internet.**
-![](./imgs/ping.png)
+**LIVRABLE : capture d'écran de votre ping vers l'Internet.**^M
+![](./imgs/ping.png)^M
 
 ---
 
@@ -320,13 +380,12 @@ Ensuite, il faut taper les commandes suivantes :
 
 ```bash
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-service nginx start
 service ssh start
 ```
 
 La commande `iptables` définit une règle dans le tableau NAT qui permet la redirection de ports et donc, l'accès à l'Internet pour les deux autres machines.
 
-Les deux autres commandes démarrent les services Web et SSH du serveur.
+L'autre commande démarre le service SSH du serveur.
 
 **ATTENTION :** Il faudra aussi définir un mot de passe pour pour les connexions ssh. Pour cela, utiliser la commande `passwd`.
 
